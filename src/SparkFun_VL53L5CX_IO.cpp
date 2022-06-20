@@ -82,7 +82,7 @@ uint8_t SparkFun_VL53L5CX_IO::readMultipleBytes(uint16_t registerAddress, uint8_
     _i2cPort->beginTransmission(_address);
     _i2cPort->write(highByte(registerAddress));
     _i2cPort->write(lowByte(registerAddress));
-    i2cError = _i2cPort->endTransmission(false);
+    i2cError = _i2cPort->endTransmission();
     if (i2cError != 0)
         return (i2cError);
 
