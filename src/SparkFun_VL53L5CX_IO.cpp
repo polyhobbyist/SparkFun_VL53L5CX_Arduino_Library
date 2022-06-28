@@ -52,8 +52,8 @@ uint8_t SparkFun_VL53L5CX_IO::writeMultipleBytes(uint16_t registerAddress, uint8
     while (bytesToSend > 0)
     {
         uint32_t len = bytesToSend;
-        if (len > (wireMaxPacketSize - 2)) // Allow 2 byte for register address
-            len = (wireMaxPacketSize - 2);
+        if (len > (wireMaxPacketSize - 2u)) // Allow 2 byte for register address
+            len = (wireMaxPacketSize - 2u);
 
         _i2cPort->beginTransmission((uint8_t)_address);
         _i2cPort->write(highByte(registerAddress));
@@ -63,7 +63,7 @@ uint8_t SparkFun_VL53L5CX_IO::writeMultipleBytes(uint16_t registerAddress, uint8
         for (uint16_t x = 0; x < len; x++)
             _i2cPort->write(buffer[startSpot + x]); // Write a portion of the payload to the bus
 
-        i2cError = _i2cPort->endTransmission(); // Release bus because we are writing the address each time
+        i2cError = _i2cPort->endTransmission(true); // Release bus because we are writing the address each time
         if (i2cError != 0)
             return (i2cError); // Sensor did not ACK
 
@@ -128,5 +128,5 @@ uint8_t SparkFun_VL53L5CX_IO::writeSingleByte(uint16_t registerAddress, uint8_t 
     _i2cPort->write(highByte(registerAddress));
     _i2cPort->write(lowByte(registerAddress));
     _i2cPort->write(value);
-    return _i2cPort->endTransmission();
+    return _i2cPort->endTransmission(true);
 }
