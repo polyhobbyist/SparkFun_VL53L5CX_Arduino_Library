@@ -22,7 +22,7 @@
 #include "SparkFun_VL53L5CX_IO.h"
 #include "SparkFun_VL53L5CX_Library_Constants.h"
 
-bool SparkFun_VL53L5CX_IO::begin(byte address, TwoWire &wirePort)
+bool SparkFun_VL53L5CX_IO::begin(uint8_t address, TwoWire &wirePort)
 {
     _address = address;
     _i2cPort = &wirePort;
