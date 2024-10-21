@@ -30,7 +30,7 @@ void SparkFun_VL53L5CX::clearErrorStruct()
     lastError.lastErrorValue = 0;
 }
 
-bool SparkFun_VL53L5CX::begin(byte address, TwoWire &wirePort)
+bool SparkFun_VL53L5CX::begin(uint8_t address, TwoWire &wirePort)
 {
     clearErrorStruct();
 
