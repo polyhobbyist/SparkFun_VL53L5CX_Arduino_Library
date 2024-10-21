@@ -62,7 +62,7 @@ public:
     SparkFun_VL53L5CX(){};
 
     // Start up the sensor. Passing an address and Wire port instance is optional.
-    bool begin(byte address = (DEFAULT_I2C_ADDR >> 1), TwoWire &wirePort = Wire);
+    bool begin(uint8_t address = (DEFAULT_I2C_ADDR >> 1), TwoWire &wirePort = Wire);
 
     // Set the error callback function.
     void setErrorCallback(void (*errorCallback)(SF_VL53L5CX_ERROR_TYPE errorCode, uint32_t errorValue));
