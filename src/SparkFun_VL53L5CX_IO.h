@@ -43,7 +43,7 @@ public:
   SparkFun_VL53L5CX_IO(){};
 
   // Begin two wire interface
-  bool begin(byte address, TwoWire &wirePort);
+  bool begin(uint8_t address, TwoWire &wirePort);
 
   // Return true if we get a reply from the I2C device.
   bool isConnected();
